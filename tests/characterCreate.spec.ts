@@ -166,7 +166,7 @@ test.describe('creating character', () => {
     await page.setInputFiles('input[type="file"]', imagePath);
     await page.getByRole('button', { name: 'Zapisz' }).click();
 
-    //Sprawdzenie punktów za rasę i klasę
+    //Sprawdzenie punktów za rasę i klasę (1) człowiek (1) wojownik (10, 16, 20)
     await expect(page.getByText('*10')).toBeVisible();
     await expect(page.getByText('*16')).toBeVisible();
     await expect(page.getByText('*20')).toBeVisible();
