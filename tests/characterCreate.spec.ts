@@ -71,9 +71,6 @@ test.describe('creating character', () => {
     //Wybranie rasy (3 - Krasnolud)
     await clickButtonByName(page, 'Przewiń w prawo');
     await clickButtonByName(page, 'Przewiń w prawo');
-    await page
-      .getByRole('heading', { name: 'Krasnolud - niezłomny, uparty' })
-      .click();
 
     //Asercja opisu Krasnoluda
     await expect(
@@ -90,9 +87,6 @@ test.describe('creating character', () => {
     await clickButtonByName(page, 'Potwierdź');
     await clickButtonByName(page, 'Przewiń w prawo');
     await clickButtonByName(page, 'Przewiń w prawo');
-    await page
-      .getByRole('heading', { name: 'Mag - magowie posiadają' })
-      .click();
 
     //Asercja opisu Maga
     await expect(
@@ -111,7 +105,6 @@ test.describe('creating character', () => {
     await page.getByRole('button', { name: 'Dodaj zdjęcie' }).click();
     await page.setInputFiles('input[type="file"]', imagePath);
     await page.getByRole('button', { name: 'Zapisz' }).click();
-    await page.getByText('Zapisano').click();
 
     //Asercja
     await expect(page.getByText('Zapisano')).toBeVisible();
@@ -126,11 +119,6 @@ test.describe('creating character', () => {
     await page.getByRole('button', { name: 'Prześlij formularz' }).click();
 
     //Brak wypełnienia obowiązkowych pól w formularzu
-    await page
-      .locator('div')
-      .filter({ hasText: /^Nazwa postaciTo pole jest wymagane$/ })
-      .getByRole('paragraph')
-      .click();
     await expect(
       page.getByText('Nazwa postaciTo pole jest wymagane'),
     ).toBeVisible();
@@ -156,7 +144,7 @@ test.describe('creating character', () => {
     await expect(page.getByText('Wybrana Klasa: ŁOWCA')).toBeVisible();
   });
 
-  test('Creating full character', async ({ page }) => {
+  test('Creating character with all fields', async ({ page }) => {
     //Wybranie rasy i klasy
     await clickButtonByName(page, 'Potwierdź');
     await clickButtonByName(page, 'Potwierdź');
