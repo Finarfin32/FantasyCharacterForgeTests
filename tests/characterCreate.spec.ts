@@ -154,12 +154,7 @@ test.describe('creating character', () => {
     await page.setInputFiles('input[type="file"]', imagePath);
     await page.getByRole('button', { name: 'Zapisz' }).click();
 
-    //Sprawdzenie punktów za rasę i klasę (1) człowiek (1) wojownik (10, 16, 20)
-    await expect(page.getByText('*10')).toBeVisible();
-    await expect(page.getByText('*16')).toBeVisible();
-    await expect(page.getByText('*20')).toBeVisible();
-
-    //Użytkownik przydziela po 5 punktów
+    //Użytkownik przydziela po 5 punktów ma do rozdania maks 15
     await page
       .getByRole('button', { name: '+' })
       .first()
@@ -188,10 +183,10 @@ test.describe('creating character', () => {
       sampleEquipment,
       sampleBiography,
     );
-
-    //Sprawdzenie punktów rozdanych przez użytkownika
-    await expect(page.getByText('Siła: 5')).toBeVisible();
-    await expect(page.getByText('Zręczność: 5')).toBeVisible();
-    await expect(page.getByText('Inteligencja: 5')).toBeVisible();
+    //Sprawdzenie punktów za rasę i klasę (1) człowiek (1) wojownik (10, 16, 20)
+    //Sprawdzenie punktów rozdanych przez użytkownika + punkty przydzielone z kart
+    await expect(page.getByText('Siła: 15')).toBeVisible();
+    await expect(page.getByText('Zręczność: 21')).toBeVisible();
+    await expect(page.getByText('Inteligencja: 25')).toBeVisible();
   });
 });
