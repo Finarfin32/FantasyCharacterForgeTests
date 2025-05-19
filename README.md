@@ -47,9 +47,9 @@ After character creation, the test ensures that all entered details (name, dynas
 - new project with Playwright  
   `npm init playwright@latest`
 - record tests for given site  
-  `npx playwright codegen http://localhost:3000/`
-
-  (First, you need to set up the project locally: FantasyCharacterForge)
+  `npx playwright codegen http://localhost:3000/` (First, you need to set up the project locally: FantasyCharacterForge)
+- or 
+  `npx playwright codegen https://our3worlds.pl/creatorproject/`
 
 - run tests without browser GUI  
   `npx playwright test`

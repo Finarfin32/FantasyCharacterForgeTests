@@ -13,14 +13,14 @@ test.describe('creating character', () => {
 
   //Hook do przygotowania przed każdym testem
   test.beforeEach(async ({ page }) => {
-    const url = 'http://localhost:3000/';
+    const url = 'https://our3worlds.pl/creatorproject/';
     await page.goto(url);
   });
 
   // Funkcja do klikania w przyciski
   const clickButtonByName = async (page, name) => {
     const button = await page.getByRole('button', { name });
-    //Asercja
+    //Asercja (sprawdzania, czy warunek w teście jest spełniony)
     await expect(button).toBeVisible();
     //Klik
     await button.click();
